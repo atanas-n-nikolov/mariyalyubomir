@@ -3,10 +3,6 @@
   margin: 0;
 }
 
-:root {
-  --viewport-height: 100vh;
-}
-
 html {
   font: 16px/1.5 "Roboto Slab", serif;
   font-style: normal;
