@@ -7,29 +7,29 @@ function App() {
     const [timeLeft, setTimeLeft] = useState({});
     const [isMainSectionVisible, setIsMainSectionVisible] = useState(false);
 
-    useEffect(() => {
-        const resizeHandler = () => {
-            if (isMainSectionVisible) {
-                const height = window.innerHeight;
-                document.documentElement.style.setProperty('--viewport-height', `${height}px`);
-            }
-        };
+  useEffect(() => {
+    const resizeHandler = () => {
+      if (isMainSectionVisible) {
+        const height = window.innerHeight;
+        document.documentElement.style.setProperty('--viewport-height', `${height}px`);
+      }
+    };
 
-        window.addEventListener('resize', resizeHandler);
+    window.addEventListener('resize', resizeHandler);
 
-        const observer = new IntersectionObserver((entries) => {
-            const entry = entries[0];
-            setIsMainSectionVisible(entry.intersectionRatio > 0.1);
-        }, { threshold: 0.1 });
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setIsMainSectionVisible(entry.intersectionRatio >= 0.9);
+    }, { threshold: 0.9 });
 
-        const mainSection = document.querySelector('.main-section');
-        if (mainSection) observer.observe(mainSection);
+    const mainSection = document.querySelector('.main-section');
+    if (mainSection) observer.observe(mainSection);
 
-        return () => {
-            window.removeEventListener('resize', resizeHandler);
-            observer.disconnect();
-        };
-    }, [isMainSectionVisible]);
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+      observer.disconnect();
+    };
+  }, [isMainSectionVisible]);
 
     useEffect(() => {
         const interval = setInterval(() => {
