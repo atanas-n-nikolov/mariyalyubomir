@@ -25,8 +25,8 @@ html {
 .wrapper section {
   position: relative;
   overflow: hidden;
-  min-height: var(--app-height);
   width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
   background-color: #F1F7F3;
   display: flex;
   flex-direction: column;

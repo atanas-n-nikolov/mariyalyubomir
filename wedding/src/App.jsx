@@ -5,21 +5,21 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
-
+    
     useEffect(() => {
-        const setAppHeight = () => {
-          const doc = document.documentElement;
-          doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+        const setRealViewportHeight = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
-      
-        setAppHeight();
-      
-        window.addEventListener('resize', setAppHeight);
-      
-        return () => {
-          window.removeEventListener('resize', setAppHeight);
-        };
-      }, []);
+
+        // Задаваме го веднъж при зареждане
+        setRealViewportHeight();
+
+        // И при resize, за да се актуализира
+        window.addEventListener('resize', setRealViewportHeight);
+
+        return () => window.removeEventListener('resize', setRealViewportHeight);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
