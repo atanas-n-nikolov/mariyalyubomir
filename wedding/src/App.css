@@ -25,7 +25,7 @@ html {
 .wrapper section {
   position: relative;
   overflow: hidden;
-  height: 100dvh;
+  min-height: 100dvh;
   width: 100%;
   background-color: #F1F7F3;
   display: flex;
