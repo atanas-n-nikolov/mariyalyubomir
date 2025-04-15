@@ -6,23 +6,10 @@ function App() {
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
     useEffect(() => {
-        const updateHeight = () => {
-          // Изчисляваме височината на екрана
-          const height = window.innerHeight;
-          
-          // Задаваме височината чрез CSS променлива
-          document.documentElement.style.setProperty('--viewport-height', `${height}px`);
-        };
-
-        // Извикваме веднъж при зареждане
-        updateHeight();
-    
-        // Слушаме за преоразмеряване, но не променяме височината
-        window.addEventListener('resize', updateHeight);
-    
-        // Почистваме слушателя при демонтиране
-        return () => window.removeEventListener('resize', updateHeight);
-      }, []);
+        // Изчисляваме височината на екрана веднъж при зареждане
+        const height = window.innerHeight;
+        document.documentElement.style.setProperty('--viewport-height', `${height}px`);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
