@@ -34,15 +34,14 @@ body {
 
 .main-section {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  min-height: 100vh;
+  max-height: 100vh;
   height: auto;
   background-color: #F1F7F3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 3em;
+  padding: 3em 0;
   gap: 2em;
 }
 
@@ -202,7 +201,7 @@ body {
   }
 
   .main-section {
-    padding-top: 1em;
+    padding: 1em 0;
     gap: 0.5em;
   }
 
