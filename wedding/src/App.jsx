@@ -6,7 +6,6 @@ function App() {
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
     useEffect(() => {
-        // Изчисляваме височината на екрана веднъж при зареждане
         const height = window.innerHeight;
         document.documentElement.style.setProperty('--viewport-height', `${height}px`);
     }, []);

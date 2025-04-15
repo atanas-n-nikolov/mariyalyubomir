@@ -178,6 +178,12 @@ section header h1 {
   font-weight: 300;
 }
 
+@media (max-height: 360px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 @media (max-height: 500px) {
   .wrapper article {
     padding: 1em;
@@ -195,9 +201,6 @@ section header h1 {
   .place-wrapper {
     gap: 0.5em;
   }
-}
-
-@media (max-height: 400px) {
   .hero {
     width: 30%;
   }
