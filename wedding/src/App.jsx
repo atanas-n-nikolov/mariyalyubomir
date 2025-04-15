@@ -5,20 +5,21 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
-    
+
     useEffect(() => {
-        const setRealViewportHeight = () => {
-            const vh = window.innerHeight * 0.01;
+        // Изчисляваме височината на екрана и задаваме стойност за CSS
+        const setStaticViewportHeight = () => {
+            const vh = window.innerHeight;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
 
         // Задаваме го веднъж при зареждане
-        setRealViewportHeight();
+        setStaticViewportHeight();
 
-        // И при resize, за да се актуализира
-        window.addEventListener('resize', setRealViewportHeight);
+        // Обновяваме при промяна на размера на прозореца
+        window.addEventListener('resize', setStaticViewportHeight);
 
-        return () => window.removeEventListener('resize', setRealViewportHeight);
+        return () => window.removeEventListener('resize', setStaticViewportHeight);
     }, []);
 
     useEffect(() => {
