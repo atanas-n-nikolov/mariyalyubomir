@@ -5,10 +5,31 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
+    const [isMainSectionVisible, setIsMainSectionVisible] = useState(true);
+
     useEffect(() => {
-        const height = window.innerHeight;
-        document.documentElement.style.setProperty('--viewport-height', `${height}px`);
-    }, []);
+        const resizeHandler = () => {
+          if (isMainSectionVisible) {
+            const height = window.innerHeight;
+            document.documentElement.style.setProperty('--viewport-height', `${height}px`);
+          }
+        };
+    
+        window.addEventListener('resize', resizeHandler);
+    
+        const observer = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          setIsMainSectionVisible(entry.isIntersecting);
+        }, { threshold: 0.5 });
+    
+        const mainSection = document.querySelector('.main-section');
+        if (mainSection) observer.observe(mainSection);
+    
+        return () => {
+          window.removeEventListener('resize', resizeHandler);
+          observer.disconnect();
+        };
+      }, [isMainSectionVisible]); 
 
     useEffect(() => {
         const interval = setInterval(() => {
