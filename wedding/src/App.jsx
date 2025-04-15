@@ -5,18 +5,19 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
+    const [viewportHeight, setViewportHeight] = useState(0);
 
     useEffect(() => {
-        // Функция за изчисляване и задаване на височината на секцията
+        // Функция за изчисляване на височината на екрана
         const setStaticViewportHeight = () => {
-            const vh = window.innerHeight * 0.01; // Изчисляваме 1% от височината на екрана
-            document.documentElement.style.setProperty('--vh', `${vh}px`); // Записваме го в CSS променлива
+            const vh = window.innerHeight; // Получаваме точната височина на екрана
+            setViewportHeight(vh); // Записваме я в състоянието
         };
 
         // Първоначално задаваме височината
         setStaticViewportHeight();
 
-        // Слушаме за промяна на размера на прозореца
+        // Добавяме слушател за промяна на размера на прозореца
         window.addEventListener('resize', setStaticViewportHeight);
 
         return () => window.removeEventListener('resize', setStaticViewportHeight);
@@ -50,7 +51,7 @@ function App() {
     }, [targetDate]);
     return (
         <div className="wrapper">
-            <section>
+            <section style={{ height: `${viewportHeight}px` }}>
                 <header>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
