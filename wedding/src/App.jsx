@@ -19,8 +19,8 @@ function App() {
 
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      setIsMainSectionVisible(entry.intersectionRatio >= 0.9);
-    }, { threshold: 0.9 });
+      setIsMainSectionVisible(entry.intersectionRatio === 1);
+    }, { threshold: 1 });
 
     const mainSection = document.querySelector('.main-section');
     if (mainSection) observer.observe(mainSection);
@@ -59,7 +59,7 @@ function App() {
     }, [targetDate]);
     return (
         <div className="wrapper">
-            <section style={{ height: 'var(--viewport-height)' }}>
+            <section className="main-section" style={{ height: 'var(--viewport-height)' }}>
                 <header>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
