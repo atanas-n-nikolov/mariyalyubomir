@@ -35,7 +35,7 @@ body {
 .main-section {
   position: relative;
   width: 100%;
-  max-height: 100vh;
+  min-height: 100vh;
   height: auto;
   background-color: #F1F7F3;
   display: flex;
