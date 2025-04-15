@@ -7,16 +7,16 @@ function App() {
     const [timeLeft, setTimeLeft] = useState({});
 
     useEffect(() => {
-        // Изчисляваме височината на екрана и задаваме стойност за CSS
+        // Функция за изчисляване и задаване на височината на секцията
         const setStaticViewportHeight = () => {
-            const vh = window.innerHeight;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            const vh = window.innerHeight * 0.01; // Изчисляваме 1% от височината на екрана
+            document.documentElement.style.setProperty('--vh', `${vh}px`); // Записваме го в CSS променлива
         };
 
-        // Задаваме го веднъж при зареждане
+        // Първоначално задаваме височината
         setStaticViewportHeight();
 
-        // Обновяваме при промяна на размера на прозореца
+        // Слушаме за промяна на размера на прозореца
         window.addEventListener('resize', setStaticViewportHeight);
 
         return () => window.removeEventListener('resize', setStaticViewportHeight);
