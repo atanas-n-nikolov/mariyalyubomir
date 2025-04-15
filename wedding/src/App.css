@@ -25,8 +25,7 @@ html {
 .wrapper section {
   position: relative;
   overflow: hidden;
-  height: 100dvh;
-  min-height: 100dvh;
+  height: var(--app-height);
   width: 100%;
   background-color: #F1F7F3;
   display: flex;

@@ -7,6 +7,21 @@ function App() {
     const [timeLeft, setTimeLeft] = useState({});
 
     useEffect(() => {
+        const setAppHeight = () => {
+          const doc = document.documentElement;
+          doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+        };
+      
+        setAppHeight();
+      
+        window.addEventListener('resize', setAppHeight);
+      
+        return () => {
+          window.removeEventListener('resize', setAppHeight);
+        };
+      }, []);
+
+    useEffect(() => {
         const interval = setInterval(() => {
             const currentTime = new Date();
             setNow(currentTime);
