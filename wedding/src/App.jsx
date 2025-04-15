@@ -5,23 +5,24 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
-    const [viewportHeight, setViewportHeight] = useState(0);
-
     useEffect(() => {
-        // Функция за изчисляване на височината на екрана
-        const setStaticViewportHeight = () => {
-            const vh = window.innerHeight; // Получаваме точната височина на екрана
-            setViewportHeight(vh); // Записваме я в състоянието
+        const updateHeight = () => {
+          // Изчисляваме височината на екрана
+          const height = window.innerHeight;
+          
+          // Задаваме височината чрез CSS променлива
+          document.documentElement.style.setProperty('--viewport-height', `${height}px`);
         };
 
-        // Първоначално задаваме височината
-        setStaticViewportHeight();
-
-        // Добавяме слушател за промяна на размера на прозореца
-        window.addEventListener('resize', setStaticViewportHeight);
-
-        return () => window.removeEventListener('resize', setStaticViewportHeight);
-    }, []);
+        // Извикваме веднъж при зареждане
+        updateHeight();
+    
+        // Слушаме за преоразмеряване, но не променяме височината
+        window.addEventListener('resize', updateHeight);
+    
+        // Почистваме слушателя при демонтиране
+        return () => window.removeEventListener('resize', updateHeight);
+      }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -51,7 +52,7 @@ function App() {
     }, [targetDate]);
     return (
         <div className="wrapper">
-            <section style={{ height: `${viewportHeight}px` }}>
+            <section style={{ height: 'var(--viewport-height)' }}>
                 <header>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
