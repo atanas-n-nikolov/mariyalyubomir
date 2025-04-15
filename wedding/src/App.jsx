@@ -5,31 +5,31 @@ function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
-    const [isMainSectionVisible, setIsMainSectionVisible] = useState(true);
+    const [isMainSectionVisible, setIsMainSectionVisible] = useState(false);
 
     useEffect(() => {
         const resizeHandler = () => {
-          if (isMainSectionVisible) {
-            const height = window.innerHeight;
-            document.documentElement.style.setProperty('--viewport-height', `${height}px`);
-          }
+            if (isMainSectionVisible) {
+                const height = window.innerHeight;
+                document.documentElement.style.setProperty('--viewport-height', `${height}px`);
+            }
         };
-    
+
         window.addEventListener('resize', resizeHandler);
-    
+
         const observer = new IntersectionObserver((entries) => {
-          const entry = entries[0];
-          setIsMainSectionVisible(entry.isIntersecting);
-        }, { threshold: 0.5 });
-    
+            const entry = entries[0];
+            setIsMainSectionVisible(entry.intersectionRatio > 0.1);
+        }, { threshold: 0.1 });
+
         const mainSection = document.querySelector('.main-section');
         if (mainSection) observer.observe(mainSection);
-    
+
         return () => {
-          window.removeEventListener('resize', resizeHandler);
-          observer.disconnect();
+            window.removeEventListener('resize', resizeHandler);
+            observer.disconnect();
         };
-      }, [isMainSectionVisible]); 
+    }, [isMainSectionVisible]);
 
     useEffect(() => {
         const interval = setInterval(() => {
