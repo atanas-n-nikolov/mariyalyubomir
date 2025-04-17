@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
 
@@ -7,8 +7,6 @@ function App() {
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const imageRef = useRef(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -38,87 +36,40 @@ function App() {
         return () => clearInterval(interval);
     }, [targetDate]);
 
-    // IntersectionObserver for lazy loading the image
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setImageLoaded(true);  // Start loading the image when it enters the viewport
-            }
-        }, { threshold: 0.1 });
-
-        if (imageRef.current) {
-            observer.observe(imageRef.current);
-        }
-
-        return () => {
-            if (imageRef.current) {
-                observer.unobserve(imageRef.current);
-            }
-        };
-    }, []);
-
     return (
         <div className="wrapper">
-            <section className="main-section">
-                <motion.header
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
+            <motion.section
+                className="main-section"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}>
+                <header>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
-                </motion.header>
-
-                {isLoading ? (
-                    <div className="loader-wrapper">
-                        <motion.div
-                            className="loader-circle"
-                            animate={{ rotate: 360 }}
-                            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                        />
-                        <p>Зареждане...</p>
+                </header>
+                <div className="timer" >
+                    <div className="section">
+                        <p className="data">{isLoading ? 0 : timeLeft.days}</p>
+                        <p className="time">дни</p>
                     </div>
-                ) : (
-                    <motion.div
-                        className="timer"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                    >
-                        <div className="section">
-                            <p className="data">{timeLeft.days}</p>
-                            <p className="time">дни</p>
-                        </div>
-                        <div className="section">
-                            <p className="data">{timeLeft.hours}</p>
-                            <p className="time">часа</p>
-                        </div>
-                        <div className="section">
-                            <p className="data">{timeLeft.minutes}</p>
-                            <p className="time">мин.</p>
-                        </div>
-                        <div className="section">
-                            <p className="data">{timeLeft.seconds}</p>
-                            <p className="time">сек.</p>
-                        </div>
-                    </motion.div>
-                )}
-
-                <motion.h3
-                    className="data"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
-                >
+                    <div className="section">
+                        <p className="data">{isLoading ? 0 : timeLeft.hours}</p>
+                        <p className="time">часа</p>
+                    </div>
+                    <div className="section">
+                        <p className="data">{isLoading ? 0 : timeLeft.minutes}</p>
+                        <p className="time">мин.</p>
+                    </div>
+                    <div className="section">
+                        <p className="data">{isLoading ? 0 : timeLeft.seconds}</p>
+                        <p className="time">сек.</p>
+                    </div>
+                </div>
+                <h3 className="data" >
                     7 юни (събота) 2025 г.
-                </motion.h3>
+                </h3>
 
-                <motion.div
-                    className="place-wrapper"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-                >
+                <div className="place-wrapper" >
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
@@ -133,18 +84,13 @@ function App() {
                             <p>виж на картата</p>
                         </a>
                     </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    className="flowers"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-                >
+                <div className="flowers">
                     <img className="left" src="left.svg" alt="цветя ляво" />
                     <img className="right" src="right.svg" alt="цветя дясно" />
-                </motion.div>
-            </section>
+                </div>
+            </motion.section>
             <article>
                 <div className="card">
                     <h4>Скъпи приятели,</h4>
@@ -154,20 +100,17 @@ function App() {
                     <p>А <strong>Милена</strong> и <strong>Светослав</strong> заедно с нас се вълнуват, защото те ще ни кумуват!</p>
                     <p>Искаме да сме заедно с Вас в този специален ден, без формалности , а с истинска радост и споделени моменти!</p>
                 </div>
-                <img src="wood.svg" alt="декорация дърво" loading="lazy" />
+                <img src="wood.svg" alt="декорация дърво" />
                 <div className="card">
                     <p>Моля потвърдете присъствието си до 15.05.2025г, за да знаем колко чаши да напълним!</p>
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
                     <div className="hero">
                         <img
-                            ref={imageRef}
-                            src={imageLoaded ? "test.jpg" : ""}
+                            src="test.jpg"
                             alt="снимка младоженци"
                             width="600"
                             height="400"
                             importance="high"
-                            loading="lazy"
-                            onLoad={() => setImageLoaded(true)}
                         />
                     </div>
                     <h4>Очакваме Ви!</h4>
