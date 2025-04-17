@@ -42,7 +42,7 @@ function App() {
                 className="main-section"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}>
+                transition={{ duration: 3, ease: "easeOut" }}>
                 <header>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
