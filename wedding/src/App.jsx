@@ -115,7 +115,7 @@ function App() {
                     </div>
                 </motion.div>
 
-                <motion.div
+                {/* <motion.div
                     className="flowers"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -123,7 +123,7 @@ function App() {
                 >
                     <img src="left.svg" alt="цветя ляво" />
                     <img src="right.svg" alt="цветя дясно" />
-                </motion.div>
+                </motion.div> */}
             </section>
             <article>
                 <div className="card">
