@@ -24,17 +24,17 @@ export default defineConfig({
       },
       svgo: {
         plugins: [
-          { removeViewBox: false }, // Оставя viewBox, което е важно за резолюцията
-          { cleanupIDs: false },    // Премахва ID-та, които не се използват
-          { removeUselessDefs: true }, // Премахва ненужни дефиниции
-          { removeEmptyAttrs: true },  // Премахва празни атрибути
-          { removeStyleElement: true }, // Премахва стилове от SVG
-          { removeTitle: true },       // Премахва заглавията
-          { minifyStyles: true },      // Минифицира стиловете
-          { convertShapeToPath: true }, // Превръща фигури в пътеки
+          { removeViewBox: false },
+          { cleanupIDs: false },
+          { removeUselessDefs: true },
+          { removeEmptyAttrs: true },
+          { removeStyleElement: true },
+          { removeTitle: true },
+          { minifyStyles: true },
+          { convertShapeToPath: true },
         ]
       },
-      logLevel: 'warn', // Това ще ни даде повече информация за грешките
+      logLevel: 'warn',
     }),
   ],
   build: {
