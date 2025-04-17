@@ -121,8 +121,8 @@ function App() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                 >
-                    <img className="left" src="left.svg" alt="цветя ляво" loading="lazy" />
-                    <img className="right" src="right.svg" alt="цветя дясно" loading="lazy" />
+                    <img className="left" src="left.svg" alt="цветя ляво" />
+                    <img className="right" src="right.svg" alt="цветя дясно" />
                 </motion.div>
             </section>
             <article>
