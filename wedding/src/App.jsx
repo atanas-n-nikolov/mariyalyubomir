@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { lazy } from 'react';
 import './App.css';
 
 function App() {
@@ -133,7 +134,7 @@ function App() {
                     <p>А <strong>Милена</strong> и <strong>Светослав</strong> заедно с нас се вълнуват, защото те ще ни кумуват!</p>
                     <p>Искаме да сме заедно с Вас в този специален ден, без формалности , а с истинска радост и споделени моменти!</p>
                 </div>
-                <img src="wood.svg" alt="декорация дърво" />
+                <img src="wood.svg" alt="декорация дърво" loading="lazy" />
                 <div className="card">
                     <p>Моля потвърдете присъствието си до 15.05.2025г, за да знаем колко чаши да напълним!</p>
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
@@ -141,10 +142,10 @@ function App() {
                         <img
                             src="test.jpg"
                             alt="снимка младоженци"
-                            loading="eager"
                             width="600"
                             height="400"
                             importance="high"
+                            loading="lazy"
                         />
                     </div>
                     <h4>Очакваме Ви!</h4>
