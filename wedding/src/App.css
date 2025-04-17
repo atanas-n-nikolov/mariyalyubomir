@@ -141,7 +141,15 @@ img {
 
 .flowers img {
   overflow: hidden;
-  width: 100%;
+}
+
+.flowers .left {
+  width: 174px;
+  height: auto;
+}
+
+.flowers .right {
+  width: 219px;
   height: auto;
 }
 
