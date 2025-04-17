@@ -38,7 +38,7 @@ function App() {
     }, [targetDate]);
     return (
         <div className="wrapper">
-                <section className="main-section">
+            <section className="main-section">
                 <motion.header
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -138,7 +138,13 @@ function App() {
                     <p>Моля потвърдете присъствието си до 15.05.2025г, за да знаем колко чаши да напълним!</p>
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
                     <div className="hero">
-                        <img src="test.jpg" alt="снимка младоженци" />
+                        <img
+                            src="test.jpg"
+                            alt="снимка младоженци"
+                            loading="eager"
+                            width="600"
+                            height="400"
+                        />
                     </div>
                     <h4>Очакваме Ви!</h4>
                 </div>
