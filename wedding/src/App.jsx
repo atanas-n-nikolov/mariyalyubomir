@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { lazy } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import './App.css';
 
 function App() {
@@ -8,6 +7,8 @@ function App() {
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const imageRef = useRef(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -31,12 +32,31 @@ function App() {
 
                 setTimeLeft({ days, hours, minutes, seconds });
                 setIsLoading(false);
-
             }
         }, 1000);
 
         return () => clearInterval(interval);
     }, [targetDate]);
+
+    // IntersectionObserver for lazy loading the image
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setImageLoaded(true);  // Start loading the image when it enters the viewport
+            }
+        }, { threshold: 0.1 });
+
+        if (imageRef.current) {
+            observer.observe(imageRef.current);
+        }
+
+        return () => {
+            if (imageRef.current) {
+                observer.unobserve(imageRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div className="wrapper">
             <section className="main-section">
@@ -140,19 +160,21 @@ function App() {
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
                     <div className="hero">
                         <img
-                            src="test.jpg"
+                            ref={imageRef}
+                            src={imageLoaded ? "test.jpg" : ""}
                             alt="снимка младоженци"
                             width="600"
                             height="400"
                             importance="high"
                             loading="lazy"
+                            onLoad={() => setImageLoaded(true)}
                         />
                     </div>
                     <h4>Очакваме Ви!</h4>
                 </div>
             </article>
         </div>
-    )
+    );
 }
 
 export default App;
