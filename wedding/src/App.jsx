@@ -144,6 +144,7 @@ function App() {
                             loading="eager"
                             width="600"
                             height="400"
+                            importance="high"
                         />
                     </div>
                     <h4>Очакваме Ви!</h4>
