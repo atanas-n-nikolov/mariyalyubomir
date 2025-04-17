@@ -26,12 +26,12 @@ export default defineConfig({
         plugins: [
           { removeViewBox: false },
           { cleanupIDs: false },
-          { removeUselessDefs: true },
-          { removeEmptyAttrs: true },
-          { removeStyleElement: true },
-          { removeTitle: true },
-          { minifyStyles: true },
-          { convertShapeToPath: true },
+          // { removeUselessDefs: true },
+          // { removeEmptyAttrs: true },
+          // { removeStyleElement: true },
+          // { removeTitle: true },
+          // { minifyStyles: true },
+          // { convertShapeToPath: true },
         ]
       },
       logLevel: 'warn',
