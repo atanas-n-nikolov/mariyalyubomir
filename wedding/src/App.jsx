@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [now, setNow] = useState(new Date());
     const [timeLeft, setTimeLeft] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -27,6 +29,8 @@ function App() {
                 const seconds = Math.floor((difference / 1000) % 60);
 
                 setTimeLeft({ days, hours, minutes, seconds });
+                setIsLoading(false);
+
             }
         }, 1000);
 
@@ -34,48 +38,91 @@ function App() {
     }, [targetDate]);
     return (
         <div className="wrapper">
-            <section className="main-section">
-                <header>
+                <section className="main-section">
+                <motion.header
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
-                </header>
-                <div className="timer">
-                    <div className="section">
-                        <p className="data">{timeLeft.days}</p>
-                        <p className="time">дни</p>
+                </motion.header>
+
+                {isLoading ? (
+                    <div className="loader-wrapper">
+                        <motion.div
+                            className="loader-circle"
+                            animate={{ rotate: 360 }}
+                            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                        />
+                        <p>Зареждане...</p>
                     </div>
-                    <div className="section">
-                        <p className="data">{timeLeft.hours}</p>
-                        <p className="time">часа</p>
-                    </div>
-                    <div className="section">
-                        <p className="data">{timeLeft.minutes}</p>
-                        <p className="time">мин.</p>
-                    </div>
-                    <div className="section">
-                        <p className="data">{timeLeft.seconds}</p>
-                        <p className="time">сек.</p>
-                    </div>
-                </div>
-                <h3 className="data">7 юни (събота) 2025 г.</h3>
-                <div className="place-wrapper">
+                ) : (
+                    <motion.div
+                        className="timer"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                    >
+                        <div className="section">
+                            <p className="data">{timeLeft.days}</p>
+                            <p className="time">дни</p>
+                        </div>
+                        <div className="section">
+                            <p className="data">{timeLeft.hours}</p>
+                            <p className="time">часа</p>
+                        </div>
+                        <div className="section">
+                            <p className="data">{timeLeft.minutes}</p>
+                            <p className="time">мин.</p>
+                        </div>
+                        <div className="section">
+                            <p className="data">{timeLeft.seconds}</p>
+                            <p className="time">сек.</p>
+                        </div>
+                    </motion.div>
+                )}
+
+                <motion.h3
+                    className="data"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                >
+                    7 юни (събота) 2025 г.
+                </motion.h3>
+
+                <motion.div
+                    className="place-wrapper"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                >
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
                     </div>
                     <div className="location">
-                        <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x40aa858885a28299:0xbe0e608a52b3ccca?sa=X&ved=1t:8290&ictx=111"
+                        <a
+                            href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x40aa858885a28299:0xbe0e608a52b3ccca?sa=X&ved=1t:8290&ictx=111"
                             target="_blank"
-                            rel="noopener noreferrer">
+                            rel="noopener noreferrer"
+                        >
                             <img src="/location-pin.svg" alt="Локация" />
                             <p>виж на картата</p>
                         </a>
                     </div>
-                </div>
-                <div className="flowers">
+                </motion.div>
+
+                <motion.div
+                    className="flowers"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                >
                     <img src="left.svg" alt="цветя ляво" />
                     <img src="right.svg" alt="цветя дясно" />
-                </div>
+                </motion.div>
             </section>
             <article>
                 <div className="card">
