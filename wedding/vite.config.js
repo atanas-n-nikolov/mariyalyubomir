@@ -1,34 +1,46 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import imageminPlugin from 'vite-plugin-imagemin' // Този пакет е нужен за компресия
+import imageminPlugin from 'vite-plugin-imagemin'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     imageminPlugin({
       pngquant: {
-        quality: [0.65, 0.90],  // Определя качеството на PNG изображенията
+        quality: [0.65, 0.90],  
       },
       mozjpeg: {
-        quality: 65,           // Определя качеството на JPEG изображенията
-        progressive: true,     // Направете JPEG изображенията прогресивни
+        quality: 65,           
+        progressive: true,     
       },
       optipng: {
-        optimizationLevel: 7,  // Изберете нивото на оптимизация за PNG
+        optimizationLevel: 7,  
       },
       gifsicle: {
-        interlaced: false,     // Уверете се, че GIF изображенията не са интерласирани
+        interlaced: false,     
       },
       webp: {
-        quality: 75,           // Определя качеството на WebP изображенията
+        quality: 75,           
       },
+      svgo: {
+        plugins: [
+          { removeViewBox: false }, // Оставя viewBox, което е важно за резолюцията
+          { cleanupIDs: false },    // Премахва ID-та, които не се използват
+          { removeUselessDefs: true }, // Премахва ненужни дефиниции
+          { removeEmptyAttrs: true },  // Премахва празни атрибути
+          { removeStyleElement: true }, // Премахва стилове от SVG
+          { removeTitle: true },       // Премахва заглавията
+          { minifyStyles: true },      // Минифицира стиловете
+          { convertShapeToPath: true }, // Превръща фигури в пътеки
+        ]
+      },
+      logLevel: 'warn', // Това ще ни даде повече информация за грешките
     }),
   ],
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name].[hash].[ext]', // Определя начина на именуване на файловете
+        assetFileNames: 'assets/[name].[hash].[ext]',
       },
     },
   },
