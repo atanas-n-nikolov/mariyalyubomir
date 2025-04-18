@@ -83,12 +83,8 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <motion.img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
-                    <motion.img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
+                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво"/>
+                    <img className="right" src="right.svg" width={219} height={300} alt="цветя дясно"/>
                 </div>
             </section>
             <article>
