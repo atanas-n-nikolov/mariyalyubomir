@@ -4,8 +4,8 @@ import { motion } from "framer-motion"
 const RightSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    // width={219}
-    // height={300}
+    width={219}
+    height={300}
     fill="none"
     {...props}
   >
