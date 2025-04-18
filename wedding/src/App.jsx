@@ -85,12 +85,14 @@ function App() {
                         </a>
                     </div>
                 </motion.div>
-                <div className="flowers">
+                <motion.div className="flowers" initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}>
                     <Suspense>
                         <FlowerLeft />
                         <FlowerRight />
                     </Suspense>
-                </div>
+                </motion.div>
             </section>
             <article>
                 <div className="card">
