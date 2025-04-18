@@ -39,13 +39,13 @@ function App() {
             <section className="main-section">
                 <motion.header initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}>
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0 }}>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
                 </motion.header>
                 <motion.div className="timer" initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }} >
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }} >
                     <div className="section">
                         <p className="data">{timeLeft.days}</p>
                         <p className="time">дни</p>
@@ -65,12 +65,12 @@ function App() {
                 </motion.div>
                 <motion.h3 className="data" initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}>
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6}}>
                     7 юни (събота) 2025 г.
                 </motion.h3>
                 <motion.div className="place-wrapper" initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}>
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}>
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
@@ -85,10 +85,10 @@ function App() {
                 <div className="flowers">
                     <motion.img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -100 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }} />
+                        transition={{ duration: 1, ease: "easeOut", delay: 1}} />
                     <motion.img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }} />
+                        transition={{ duration: 1, ease: "easeOut", delay: 1}} />
                 </div>
             </section>
             <article>
