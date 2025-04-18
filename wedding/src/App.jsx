@@ -102,7 +102,7 @@ function App() {
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
                     <div className="hero">
                         <img
-                            src="test.jpg"
+                            src="wedding.png"
                             alt="снимка младоженци"
                             importance="high"
                             width={310}
