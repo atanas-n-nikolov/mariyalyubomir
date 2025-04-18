@@ -83,8 +83,8 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво"/>
-                    <img className="right" src="right.svg" width={219} height={300} alt="цветя дясно"/>
+                    <img className="left" src="left.png" width={174} height={340} alt="цветя ляво"/>
+                    <img className="right" src="right.png" width={219} height={300} alt="цветя дясно"/>
                 </div>
             </section>
             <article>
