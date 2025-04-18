@@ -157,11 +157,6 @@ img {
   font-weight: 300;
 }
 
-.location img {
-  width: 16px;
-  height: 16px;
-}
-
 .flowers {
   position: absolute;
   width: 100%;
@@ -176,16 +171,6 @@ img {
   overflow: hidden;
 }
 
-.flowers .left {
-  width: 174px;
-  height: auto;
-}
-
-.flowers .right {
-  width: 219px;
-  height: auto;
-}
-
 .wrapper article {
   padding: 2.5em 2em 5em;
   display: flex;
@@ -194,11 +179,6 @@ img {
   justify-content: center;
   text-align: center;
   gap: 1.5em;
-}
-
-article .wood {
-  width: 120px;
-  height: 39px;
 }
 
 .card {
@@ -210,8 +190,6 @@ article .wood {
 }
 
 .card img {
-  width: 310px;
-  height: 322px;
   display: block;
   border-radius: 0.75em;
   transition: transform 0.3s ease;
@@ -267,10 +245,6 @@ article .wood {
     gap: 0.5em;
   }
 
-  .hero {
-    width: 30%;
-  }
-
   .card {
     gap: 1em;
   }
@@ -287,18 +261,5 @@ article .wood {
     min-height: auto;
     height: 600px;
     max-height: 600px;
-  }
-
-  .card img {
-    max-height: 600px;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    border-radius: 0.75em;
-  }
-
-  .hero img {
-    max-height: 500px;
-    object-fit: cover;
   }
 }
