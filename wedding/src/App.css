@@ -158,8 +158,8 @@ img {
 }
 
 .location img {
-  width: 120px;
-  height: 39px;
+  width: 16px;
+  height: 16px;
 }
 
 .flowers {
@@ -194,6 +194,11 @@ img {
   justify-content: center;
   text-align: center;
   gap: 1.5em;
+}
+
+article .wood {
+  width: 120px;
+  height: 39px;
 }
 
 .card {
