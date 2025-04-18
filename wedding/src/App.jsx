@@ -90,9 +90,9 @@ function App() {
                         </a>
                     </div>
                 </motion.div>
-                <div className="flowers">
-                    <img className={`flowers ${isVisible ? 'visible' : ''}`} src="left.svg" width={174} height={340} alt="цветя ляво" />
-                    <img className={`flowers ${isVisible ? 'visible' : ''}`} src="right.svg" width={174} height={340} alt="цветя дясно" />
+                <div className={`flowers ${isVisible ? 'visible' : ''}`}>
+                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" />
+                    <img className="right" src="right.svg" width={174} height={340} alt="цветя дясно" />
                 </div>
             </section>
             <article>
