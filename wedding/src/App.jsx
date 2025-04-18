@@ -1,12 +1,10 @@
-import { Suspense, useEffect, useState, lazy } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
 
-const FlowerLeft = lazy(() => import('./FlowerLeft'));
-const FlowerRight = lazy(() => import('./FlowerRight'));
-
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
+    const [isVisible, setIsVisible] = useState(false);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
     function getTimeLeft() {
         const now = new Date();
@@ -21,7 +19,14 @@ function App() {
             minutes: Math.floor((diff / (1000 * 60)) % 60),
             seconds: Math.floor((diff / 1000) % 60),
         };
-    }
+    };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
     useEffect(() => {
         const interval = setInterval(() => {
             const updatedTimeLeft = getTimeLeft();
@@ -85,14 +90,10 @@ function App() {
                         </a>
                     </div>
                 </motion.div>
-                <motion.div className="flowers" initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}>
-                    <Suspense>
-                        <FlowerLeft />
-                        <FlowerRight />
-                    </Suspense>
-                </motion.div>
+                <div className="flowers">
+                    <img className={`flowers ${isVisible ? 'visible' : ''}`} src="left.svg" width={174} height={340} alt="цветя ляво" />
+                    <img className={`flowers ${isVisible ? 'visible' : ''}`} src="right.svg" width={174} height={340} alt="цветя дясно" />
+                </div>
             </section>
             <article>
                 <div className="card">

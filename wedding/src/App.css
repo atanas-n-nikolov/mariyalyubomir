@@ -161,11 +161,17 @@ img {
   position: absolute;
   will-change: opacity;
   width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
   bottom: 0;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   pointer-events: none;
+}
+
+.flowers.visible {
+  opacity: 1;
 }
 
 .flowers img {
