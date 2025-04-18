@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
-import LeftSvg from './components/LeftSvg';
-import RightSvg from './components/RightSvg';
 
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
@@ -85,8 +83,8 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <LeftSvg />
-                    <RightSvg />
+                    <img src="/left.png" alt="flowers-left" width={174} height={340}/>
+                    <img src="/right.png" alt="flowers-right" width={219} height={300}/>
                 </div>
             </section>
             <article>
