@@ -11,7 +11,7 @@ const RightSvg = (props) => (
   >
     <motion.g clipPath="url(#a)" initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}>
+      transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}>
       <mask
         id="b"
         width={390}
