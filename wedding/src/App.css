@@ -192,7 +192,6 @@ img {
 
 .card img {
   display: block;
-  border-radius: 0.75em;
   transition: transform 0.3s ease;
 }
 

@@ -83,10 +83,10 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <motion.img src="/left.png" alt="flowers-left" width={174} height={340} initial={{ opacity: 0, x: 50 }}
+                    <motion.img src="/left.png" alt="flowers-left" width={174} height={340} initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}/>
-                    <motion.img src="/right.png" alt="flowers-right" width={219} height={300} initial={{ opacity: 0, x: -50 }}
+                    <motion.img src="/right.png" alt="flowers-right" width={219} height={300} initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}/>
                 </div>
