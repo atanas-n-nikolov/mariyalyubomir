@@ -159,6 +159,7 @@ img {
 
 .flowers {
   position: absolute;
+  will-change: opacity;
   width: 100%;
   bottom: 0;
   display: flex;
