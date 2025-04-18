@@ -5,7 +5,6 @@ import './App.css';
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-
     function getTimeLeft() {
         const now = new Date();
         const diff = targetDate - now;
@@ -13,7 +12,6 @@ function App() {
         if (diff <= 0) {
             return { days: 0, hours: 0, minutes: 0, seconds: 0 };
         }
-
         return {
             days: Math.floor(diff / (1000 * 60 * 60 * 24)),
             hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -21,13 +19,10 @@ function App() {
             seconds: Math.floor((diff / 1000) % 60),
         };
     }
-
     useEffect(() => {
         const interval = setInterval(() => {
             const updatedTimeLeft = getTimeLeft();
-
             setTimeLeft(updatedTimeLeft);
-
             if (
                 updatedTimeLeft.days === 0 &&
                 updatedTimeLeft.hours === 0 &&
@@ -37,22 +32,20 @@ function App() {
                 clearInterval(interval);
             }
         }, 1000);
-
         return () => clearInterval(interval);
     }, []);
-
     return (
         <div className="wrapper">
-            <motion.section
-                className="main-section"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 3, ease: "easeOut" }}>
-                <header>
+            <section className="main-section">
+                <motion.header initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}>
                     <h2>Сватбата на</h2>
                     <h1>Мария и Любомир</h1>
-                </header>
-                <div className="timer" >
+                </motion.header>
+                <motion.div className="timer" initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }} >
                     <div className="section">
                         <p className="data">{timeLeft.days}</p>
                         <p className="time">дни</p>
@@ -69,33 +62,35 @@ function App() {
                         <p className="data">{timeLeft.seconds}</p>
                         <p className="time">сек.</p>
                     </div>
-                </div>
-                <h3 className="data" >
+                </motion.div>
+                <motion.h3 className="data" initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}>
                     7 юни (събота) 2025 г.
-                </h3>
-
-                <div className="place-wrapper" >
+                </motion.h3>
+                <motion.div className="place-wrapper" initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}>
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
                     </div>
                     <div className="location">
-                        <a
-                            href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x40aa858885a28299:0xbe0e608a52b3ccca?sa=X&ved=1t:8290&ictx=111"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x40aa858885a28299:0xbe0e608a52b3ccca?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noopener noreferrer">
                             <img src="/location-pin.svg" width={16} height={16} alt="Локация" />
                             <p>виж на картата</p>
                         </a>
                     </div>
-                </div>
-
+                </motion.div>
                 <div className="flowers">
-                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" />
-                    <img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" />
+                    <motion.img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }} />
+                    <motion.img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }} />
                 </div>
-            </motion.section>
+            </section>
             <article>
                 <div className="card">
                     <h4>Скъпи приятели,</h4>
