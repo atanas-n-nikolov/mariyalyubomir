@@ -63,14 +63,14 @@ function App() {
                         <p className="time">сек.</p>
                     </div>
                 </motion.div>
-                <motion.h3 className="data" initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6}}>
+                <motion.h3 className="data" initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}>
                     7 юни (събота) 2025 г.
                 </motion.h3>
-                <motion.div className="place-wrapper" initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6}}>
+                <motion.div className="place-wrapper" initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}>
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
@@ -83,10 +83,10 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <motion.img className="left" src="left.svgz" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -50 }}
+                    <motion.img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
-                    <motion.img className="right" src="right.svgz" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
+                    <motion.img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
                 </div>
