@@ -85,15 +85,15 @@ function App() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <img src="/location-pin.svg" width="16px" height="16px" alt="Локация" />
+                            <img src="/location-pin.svg" width={16} height={16} alt="Локация" />
                             <p>виж на картата</p>
                         </a>
                     </div>
                 </div>
 
                 <div className="flowers">
-                    <img className="left" src="left.svg" width="174px" height="340px" alt="цветя ляво" />
-                    <img className="right" src="right.svg" width="219px" height="300px" alt="цветя дясно" />
+                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво" />
+                    <img className="right" src="right.svg" width={219} height={300} alt="цветя дясно" />
                 </div>
             </motion.section>
             <article>
@@ -105,7 +105,7 @@ function App() {
                     <p>А <strong>Милена</strong> и <strong>Светослав</strong> заедно с нас се вълнуват, защото те ще ни кумуват!</p>
                     <p>Искаме да сме заедно с Вас в този специален ден, без формалности , а с истинска радост и споделени моменти!</p>
                 </div>
-                <img src="wood.svg" width="120px" height="39px" alt="декорация дърво" />
+                <img src="wood.svg" width={120} height={39} alt="декорация дърво" />
                 <div className="card">
                     <p>Моля потвърдете присъствието си до 15.05.2025г, за да знаем колко чаши да напълним!</p>
                     <p>Учтиво Ви молим да оставите цветята в природата , където ще можем всички да им се радваме!</p>
@@ -114,8 +114,8 @@ function App() {
                             src="test.jpg"
                             alt="снимка младоженци"
                             importance="high"
-                            width="310px"
-                            height="322px"
+                            width={310}
+                            height={322}
                         />
                     </div>
                     <h4>Очакваме Ви!</h4>
