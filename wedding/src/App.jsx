@@ -4,37 +4,42 @@ import './App.css';
 
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
-    const [now, setNow] = useState(new Date());
-    const [timeLeft, setTimeLeft] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+
+    function getTimeLeft() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+
+        return {
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((diff / (1000 * 60)) % 60),
+            seconds: Math.floor((diff / 1000) % 60),
+        };
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const currentTime = new Date();
-            setNow(currentTime);
-            const difference = targetDate - currentTime;
+            const updatedTimeLeft = getTimeLeft();
 
-            if (difference <= 0) {
+            setTimeLeft(updatedTimeLeft);
+
+            if (
+                updatedTimeLeft.days === 0 &&
+                updatedTimeLeft.hours === 0 &&
+                updatedTimeLeft.minutes === 0 &&
+                updatedTimeLeft.seconds === 0
+            ) {
                 clearInterval(interval);
-                setTimeLeft({
-                    days: 0,
-                    hours: 0,
-                    minutes: 0,
-                    seconds: 0
-                });
-            } else {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((difference / 1000 / 60) % 60);
-                const seconds = Math.floor((difference / 1000) % 60);
-
-                setTimeLeft({ days, hours, minutes, seconds });
-                setIsLoading(false);
             }
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [targetDate]);
+    }, []);
 
     return (
         <div className="wrapper">
@@ -49,19 +54,19 @@ function App() {
                 </header>
                 <div className="timer" >
                     <div className="section">
-                        <p className="data">{isLoading ? 0 : timeLeft.days}</p>
+                        <p className="data">{timeLeft.days}</p>
                         <p className="time">дни</p>
                     </div>
                     <div className="section">
-                        <p className="data">{isLoading ? 0 : timeLeft.hours}</p>
+                        <p className="data">{timeLeft.hours}</p>
                         <p className="time">часа</p>
                     </div>
                     <div className="section">
-                        <p className="data">{isLoading ? 0 : timeLeft.minutes}</p>
+                        <p className="data">{timeLeft.minutes}</p>
                         <p className="time">мин.</p>
                     </div>
                     <div className="section">
-                        <p className="data">{isLoading ? 0 : timeLeft.seconds}</p>
+                        <p className="data">{timeLeft.seconds}</p>
                         <p className="time">сек.</p>
                     </div>
                 </div>
