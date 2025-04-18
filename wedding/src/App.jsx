@@ -68,9 +68,9 @@ function App() {
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.6}}>
                     7 юни (събота) 2025 г.
                 </motion.h3>
-                <motion.div className="place-wrapper" initial={{ opacity: 0, x: 50 }}
+                <motion.div className="place-wrapper" initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}>
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6}}>
                     <div className="place">
                         <p>17:00ч.</p>
                         <p>Ресторант Алекзандър</p>
@@ -83,10 +83,10 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <motion.img className="left" src="left.png" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -50 }}
+                    <motion.img className="left" src="left.svgz" width={174} height={340} alt="цветя ляво" initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
-                    <motion.img className="right" src="right.png" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
+                    <motion.img className="right" src="right.svgz" width={219} height={300} alt="цветя дясно" initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.8}}/>
                 </div>
