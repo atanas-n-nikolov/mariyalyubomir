@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, lazy } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
+
+const FlowerLeft = lazy(() => import('./FlowerLeft'));
+const FlowerRight = lazy(() => import('./FlowerRight'));
 
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
@@ -83,8 +86,10 @@ function App() {
                     </div>
                 </motion.div>
                 <div className="flowers">
-                    <img className="left" src="left.svg" width={174} height={340} alt="цветя ляво"/>
-                    <img className="right" src="right.svg" width={219} height={300} alt="цветя дясно"/>
+                    <Suspense>
+                        <FlowerLeft />
+                        <FlowerRight />
+                    </Suspense>
                 </div>
             </section>
             <article>
