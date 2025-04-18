@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
+import LeftSvg from './components/LeftSvg';
+import RightSvg from './components/RightSvg';
 
 function App() {
     const targetDate = new Date('2025-06-07T17:00:00');
-    const [isVisible, setIsVisible] = useState(false);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
     function getTimeLeft() {
         const now = new Date();
@@ -20,13 +21,6 @@ function App() {
             seconds: Math.floor((diff / 1000) % 60),
         };
     };
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsVisible(true);
-        }, 1200);
-
-        return () => clearTimeout(timer);
-    }, []);
     useEffect(() => {
         const interval = setInterval(() => {
             const updatedTimeLeft = getTimeLeft();
@@ -90,9 +84,9 @@ function App() {
                         </a>
                     </div>
                 </motion.div>
-                <div className={`flowers ${isVisible ? 'visible' : ''}`}>
-                    <img className="left" src="left.png" width={174} height={340} alt="цветя ляво" />
-                    <img className="right" src="right.png" width={174} height={340} alt="цветя дясно" />
+                <div className="flowers">
+                    <LeftSvg />
+                    <RightSvg />
                 </div>
             </section>
             <article>
