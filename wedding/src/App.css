@@ -44,7 +44,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow-y: scroll; 
 }
 
 body {
@@ -158,6 +157,11 @@ img {
   font-weight: 300;
 }
 
+.location img {
+  width: 120px;
+  height: 39px;
+}
+
 .flowers {
   position: absolute;
   width: 100%;
@@ -201,8 +205,8 @@ img {
 }
 
 .card img {
-  width: 100%;
-  height: auto;
+  width: 310px;
+  height: 322px;
   display: block;
   border-radius: 0.75em;
   transition: transform 0.3s ease;
